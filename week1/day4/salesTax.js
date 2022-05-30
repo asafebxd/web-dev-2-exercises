@@ -15,27 +15,28 @@ If you try to access an object attribute (property) that does not exist, then it
 const salesTaxRates = {
   AB: 0.05,
   BC: 0.12,
-  SK: 0.10
+  SK: 0.1,
 };
 
 const companySalesData = [
   {
-    name: "Telus",
-    province: "BC",
-    sales: [ 100, 200, 400 ]
+    name: 'Telus',
+    province: 'BC',
+    sales: [100, 200, 400],
   },
   {
-    name: "Bombardier",
-    province: "AB",
-    sales: [ 80, 20, 10, 100, 90, 500 ]
+    name: 'Bombardier',
+    province: 'AB',
+    sales: [80, 20, 10, 100, 90, 500],
   },
   {
-    name: "Telus",
-    province: "SK",
-    sales: [ 500, 100 ]
-  }
+    name: 'Telus',
+    province: 'SK',
+    sales: [500, 100],
+  },
 ];
 
+<<<<<<< HEAD
 const calculateSalesTax = function(salesData, taxRates) {
     // Implement your code here
     let result = {}
@@ -50,5 +51,43 @@ const calculateSalesTax = function(salesData, taxRates) {
 
     return result
 }
+=======
+const calculateSalesTax = function (salesData, taxRates) {
+  // Implement your code here
+  const result = {};
+  salesData.forEach((salesInfo) => {
+    let totalSales = 0;
+    let totalTax = 0;
+    let companyObject = {};
+    if (result[salesInfo.name]) {
+      companyObject = { ...result[salesInfo.name] };
+      totalSales = companyObject.totalSales;
+      totalTax = companyObject.totalTax;
+    }
+    totalSales = salesInfo.sales.reduce((total, sale) => {
+      return total + sale;
+    }, totalSales);
+    totalTax += totalSales * taxRates[salesInfo.province];
+    result[salesInfo.name] = {
+      totalSales,
+      totalTax,
+    };
+  });
+  return result;
+};
+>>>>>>> 30afdc4ab838fa104a6286e2f583080b280e62e6
 
 console.log(calculateSalesTax(companySalesData, salesTaxRates));
+
+/*
+{
+  Telus: {
+    totalSales: value,
+    totalTax: value
+  },
+  Bombardier: {
+    totalSales: value,
+    totalTax: value
+  }
+}
+*/
