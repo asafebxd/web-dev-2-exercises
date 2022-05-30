@@ -4,7 +4,7 @@ Given the following data, implement a function calculateSalesTax that calculates
 Hints
 Break down the problem into step-by-step pseudo-code (try pen and paper sketching, thinking "top-down" vs "bottom-up", pairing--whatever feels right to you!), and use console.log statements to debug and check your assumptions.
 
-Don't be afraid to write additional functions if it helps you reason about your code! Sometimes even a very simple function like calculateTax(sales, taxRate) (calculating tax on a single dollar amount with a known rate) can help by giving the operation a name. What other small operations would partially solve this problem?
+Don't be afraid to write additional functions if it helps you reason about your code! Sometimes even a very simple function like calculateTax(sales, taxRate) (calculating tax on a single dollar a mount with a known rate) can help by giving the operation a name. What other small operations would partially solve this problem?
 
 Naming your variables clearly and descriptively will help avoid confusion.
 
@@ -38,6 +38,17 @@ const companySalesData = [
 
 const calculateSalesTax = function(salesData, taxRates) {
     // Implement your code here
+    let result = {}
+    for (let i = 0; i < salesData.length; i++) {
+      let sum = 0
+      let data = salesData[i]
+      for (let y = 0; y < data.sales.length; y++) {
+        sum += data.sales[y]
+      }
+      console.log(sum);
+    }
+
+    return result
 }
 
 console.log(calculateSalesTax(companySalesData, salesTaxRates));
