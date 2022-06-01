@@ -36,7 +36,6 @@ const companySalesData = [
   },
 ];
 
-<<<<<<< HEAD
 const calculateSalesTax = function(salesData, taxRates) {
     // Implement your code here
     let result = {}
@@ -51,31 +50,6 @@ const calculateSalesTax = function(salesData, taxRates) {
 
     return result
 }
-=======
-const calculateSalesTax = function (salesData, taxRates) {
-  // Implement your code here
-  const result = {};
-  salesData.forEach((salesInfo) => {
-    let totalSales = 0;
-    let totalTax = 0;
-    let companyObject = {};
-    if (result[salesInfo.name]) {
-      companyObject = { ...result[salesInfo.name] };
-      totalSales = companyObject.totalSales;
-      totalTax = companyObject.totalTax;
-    }
-    totalSales = salesInfo.sales.reduce((total, sale) => {
-      return total + sale;
-    }, totalSales);
-    totalTax += totalSales * taxRates[salesInfo.province];
-    result[salesInfo.name] = {
-      totalSales,
-      totalTax,
-    };
-  });
-  return result;
-};
->>>>>>> 30afdc4ab838fa104a6286e2f583080b280e62e6
 
 console.log(calculateSalesTax(companySalesData, salesTaxRates));
 

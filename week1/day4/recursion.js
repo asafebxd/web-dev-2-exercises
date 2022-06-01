@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const printItems = function (array) {
   for (let i = 0; i < array.length; i++) {
     if (Array.isArray(array[i])) {
@@ -8,10 +7,6 @@ const printItems = function (array) {
     }
   }
 };
-=======
-//Print only items (emojis) in the console. Not the arrays.
-const printItems = function (array) {};
->>>>>>> 30afdc4ab838fa104a6286e2f583080b280e62e6
 
 const array = ['😎', '💩', '🤗', '😼', '😂'];
 printItems(array);
