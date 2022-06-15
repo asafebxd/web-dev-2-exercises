@@ -8,8 +8,14 @@
  */
 function mapPromise(promise, transformer){
   return new Promise((resolve, reject) => {
-    /* IMPLEMENT ME!! */
-  });
+    promise
+      .then((data) => {
+        resolve(transformer(data))
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
 }
 
 /**
@@ -21,7 +27,14 @@ function mapPromise(promise, transformer){
  */
 function squarePromise(numberPromise){
   return numberPromise
-    .then(/* IMPLEMENT ME! */);
+    const promData = numberPromise.then((data) => {
+    }) 
+    .then((data)=>{
+      return data * data
+    })
+    .catch((error)=>{
+      return reject(error)
+    })
 }
 
 /**
