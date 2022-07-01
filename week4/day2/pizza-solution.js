@@ -43,18 +43,28 @@
 // Step 3
 
 class Pizza {
-  constructor(size, type) {
+  constructor(size, type, notes) {
     this.toppings = ['cheese', 'pizza sauce'];
     this.size = size;
     this.type = type;
+    this.notes = notes;
   }
   set size(size) {
-    this._size = size;
+    if (size === 's' || size === 'm' || size === 'l') {
+      this._size = size;
+    }
   }
   get size() {
     return this._size;
   }
 
+  get price() {
+    return 10 + this.toppings.length * 2;
+  }
+
+  addTopping(topping) {
+    this.toppings.push(topping);
+  }
   addToppings(toppings) {
     return new Promise(
       (resolve) => {
@@ -79,19 +89,28 @@ class Pizza {
   }
 }
 
-let pizza1 = new Pizza('large', 'veggie');
+let pizza1 = new Pizza('l', 'veggie', 'please remove bacon');
+console.log(pizza1.price);
+pizza1.addTopping('tomato');
+console.log('after topping', pizza1.price);
+pizza1.addTopping('spinach');
+console.log('toppings', pizza1.toppings);
+console.log('after all', pizza1.price);
+pizza1.setSize('m'); // set size
+pizza1.size = 'm'; // set size
+console.log('size after change', pizza1.size); // get size
+
+// pizza1.size = 'r';
+// console.log('get size', pizza1.size);
+// pizza1._size = 'r'; // bad practice
+// console.log('get size after set', pizza1.size);
+
 // let toppings = ['tomato', 'olives', 'spinach', 'pinapple'];
 // pizza1.addToppings(toppings).then((i) => {
 //   setTimeout(() => {
 //     pizza1.bake();
 //   }, 500 * (i + 1));
 // });
-
-// pizza1.size = 'm';
-// console.log(pizza1.size);
-// pizza1._size = 'l'; // bad practice
-// console.log(pizza1.size);
-
 // const obj = {};
 
 // function createObj() {
